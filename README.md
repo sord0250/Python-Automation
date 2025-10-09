@@ -72,7 +72,7 @@ The following code will need to be inserted into your .env file. Delete the comm
 
 ``` 
 SMTP_HOST= # the providers SMTP server hostname i.e. smtp.gmail.com
-SMTP_PORT= # usually 587 or 465
+SMTP_PORT= # 587
 SMTP_USER= # your mailbox login
 SMTP_PASS= # your mailbox password
 EMAIL_FROM= # your email in following format: Spencer O <spencer_o@spencer.com>
@@ -85,7 +85,7 @@ For gmail password, your regular one won't work. Instead, do the following:
 1) In the App passwords section, type "Mail" as the name and click create.
 1) Copy the 16-character code (no spaces).
 
-You can look most of these up on the internet. Your email password might need to be different depending on the service. More on that later. You can see why you wouldn't want all of this information just laying around in your code! There are some private things.
+You can see why you wouldn't want all of this information just laying around in your code! There are some private things.
 
 ### people.csv
 
