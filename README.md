@@ -45,7 +45,7 @@ This will familiarize you with how to use python, several of the libraries, and 
 
 This lab will give the main instructions for Windows OS users, however there will be notes when instructions differ for macOS or linux.
 
-If you don't already have VSCode installed, download it. here is a link: [VSCode](https://code.visualstudio.com/download)
+If you don't already have VSCode installed, download it. Here is a link you can download if from: [VSCode](https://code.visualstudio.com/download)
 
 **Create a new folder** to contain all your files wherever you desire, and name it "Walkthrough" or something else if you desire. 
 
@@ -56,6 +56,155 @@ In the lefthand pannel that appears, you should see the word "WALKTHROUGH" (or t
 
 Now click on the same icon, and this time name the file **weekly_email.py**.
 
+Do it again and create a file called **people.csv**.
+
 If your side pannel matches the following picture, you've done it right so far.
 
+![file creation](./img/file_creation.png)
 
+### .env
+
+Your .env file is the file that contains the secrets, such as email addresses, passwords, etc, that you don't want to share with the world. It is good practice to keep these in a separate .env file so they remain safe.
+
+Double click on the .env file to open it on your main screen. It will be blank at first. Let's change that!
+
+The following code will need to be inserted into your .env file. Delete the comments and fill it in with the correct variable:
+
+``` 
+SMTP_HOST= # the providers SMTP server hostname i.e. smtp.gmail.com
+SMTP_PORT= # usually 587 or 465
+SMTP_USER= # your mailbox login
+SMTP_PASS= # your mailbox password
+EMAIL_FROM= # your email in following format: Spencer O <spencer_o@spencer.com>
+EMAIL_TO=  # who you want to send the email to
+```
+
+For gmail password, your regular one won't work. Instead, do the following:
+1) Generate a Gmail App Password
+1) Go to Google Account → Security → 2-Step Verification (turn it on if it’s off).
+1) In the App passwords section, type "Mail" as the name and click create.
+1) Copy the 16-character code (no spaces).
+
+You can look most of these up on the internet. Your email password might need to be different depending on the service. More on that later. You can see why you wouldn't want all of this information just laying around in your code! There are some private things.
+
+### people.csv
+
+Copy the following lines into your people.csv file. This is the data we will be sending.
+```
+Last Name,First Name,Age,Date of Birth
+Johnson,Emma,28,1997-04-12
+Martinez,Daniel,35,1990-11-23
+Kim,Sophia,41,1984-02-08
+Patel,Arjun,32,1993-07-16
+Smith,Olivia,26,1999-09-30
+Brown,Ethan,38,1987-05-19
+Nguyen,Ava,30,1995-12-02
+Garcia,Lucas,45,1980-01-25
+Lee,Mia,27,1998-06-10
+Davis,Noah,33,1992-08-21
+```
+
+### Setup Python File
+
+First we need to import the libraries and functions that we will be using. Python has tons of prebuilt libraries to use, but we have to install them first.
+
+Let's download the libaries. In the top bar, there is a terminal button. Click on it and select new terminal, and then run the following command:
+
+```
+pip install pandas python-dotenv
+```
+
+In the github repo where you found these intructions, copy and paste the code from starter_code.py into your personal weekly_email.py file. 
+
+This code contains TO-DO's with instructions on how to finish the code. The comments will walk you through what you need to do and what the rest of the code is doing. Once all the TO-DO statements have been finished, move on to the next section. 
+
+Hint: If you are lost, feel free to google how to do something! The code tells you which functions to use, but not how those functions are formatted or what arguments they want. Look things up and be patient!
+
+Extra Hint: There are some parts that are maybe more complicated than you are ready to do, and if you are only here to learn how to set up the automation at the end, you might want to skip this part. In the folder titled cheat_code on the github repo, you can find working code for your weekly_email.py that you can copy in.
+
+## Test it
+
+Open the terminal, and test your file to ensure it works. You can run it by typing python or python3 followed by your file name
+
+```
+python ./weekly_email.py
+```
+
+If it doesn't work, debug it until it works! Have fun with this part! Make sure you get an email!
+
+## Schedule It (Just ChatGPT right now. Need to edit to make it flow better)
+
+On Windows, you schedule Python scripts with Task Scheduler — the built-in cron-equivalent.
+Here’s the step-by-step guide to make your weekly job reliable:
+
+1. Find your Python executable
+
+Open Command Prompt and run:
+
+where python
+
+
+Copy the full path (e.g. C:\Users\<you>\AppData\Local\Programs\Python\Python312\python.exe).
+
+2. Note your script path
+
+Example:
+
+C:\Users\<you>\Projects\weekly_report\main.py
+
+3. Create a Task
+
+Press Windows + R, type taskschd.msc, press Enter.
+
+Click Action → Create Task…
+
+General tab
+
+Name: Weekly CSV Email
+
+Check “Run whether user is logged on or not”
+
+Check “Run with highest privileges”
+
+Triggers tab → New…
+
+Begin the task: “On a schedule”
+
+Choose Weekly
+
+Pick your day and time (e.g., Mondays at 8:00 AM)
+
+Actions tab → New…
+
+Action: “Start a program”
+
+Program/script: paste your python.exe path
+(e.g. C:\Users\<you>\AppData\Local\Programs\Python\Python312\python.exe)
+
+Add arguments: "C:\Users\<you>\Projects\weekly_report\main.py"
+
+Start in: your project folder (so .env and CSV are found)
+(e.g. C:\Users\<you>\Projects\weekly_report)
+
+Conditions – uncheck “Start the task only if the computer is on AC power” if it’s a laptop.
+
+Settings – check “Run task as soon as possible after a scheduled start is missed.”
+
+4. Test it once
+
+Right-click your new task → Run.
+
+Verify: it runs Python, creates report.xlsx, and sends the email.
+
+Tip
+
+If your script writes logs, you can redirect output in the “Add arguments” box:
+
+"C:\path\to\main.py" >> "C:\path\to\weekly_log.txt" 2>&1
+
+
+That’s it — your Python report script will now run automatically once a week on Windows.
+
+### Conclusion
+
+Thanks for going through this walkthrough with me. Hopefully you have a better idea of what automation and scripting is, and how you can use it! Now, instead of spending 30 minutes every week editing an excel file, crafting an email, and sending it over, it will do it all without you spending any time at all! Scripting will make your job and life much easier, just learn how to use it!
