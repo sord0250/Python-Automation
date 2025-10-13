@@ -30,7 +30,7 @@ It isn't too an overly complicated process! Making sure you are prepared ahead o
 
 Scripting doesn't have to be overly complicated! So lets dive in.
 
-## The Walkthrough
+### The Walkthrough
 
 Today I want to familiarize you with several of the capabilites that python has. To do this, this walkthorugh will focus on how to write a script that will do the following:
 
@@ -41,6 +41,7 @@ Today I want to familiarize you with several of the capabilites that python has.
 
 This will familiarize you with how to use python, several of the libraries, and the process of scheduling it to run automatically. 
 
+## Coding the Script in VS Code
 ### Initial Setup
 
 This lab will give the main instructions for Windows OS users, however there will be notes when instructions differ for macOS or linux.
@@ -66,9 +67,9 @@ If your side pannel matches the following picture, you've done it right so far.
 
 Your .env file is the file that contains the secrets, such as email addresses, passwords, etc, that you don't want to share with the world. It is good practice to keep these in a separate .env file so they remain safe.
 
-Double click on the .env file to open it on your main screen. It will be blank at first. Let's change that!
+**Double click on the .env file** to open it on your main screen. It will be blank at first. Let's change that!
 
-The following code will need to be inserted into your .env file. Delete the comments and fill it in with the correct variable:
+The following code will need to be inserted into your .env file. Delete the comments and **input your unique variable**:
 
 ``` 
 SMTP_HOST= # the providers SMTP server hostname i.e. smtp.gmail.com
@@ -79,13 +80,13 @@ EMAIL_FROM= # your email in following format: Spencer O <spencer_o@spencer.com>
 EMAIL_TO=  # who you want to send the email to
 ```
 
-For gmail password, your regular one won't work. Instead, do the following:
+For gmail password, your regular one won't work. Instead, **do the following**:
 1) Generate a Gmail App Password
 1) Go to Google Account → Security → 2-Step Verification (turn it on if it’s off).
 1) In the App passwords section, type "Mail" as the name and click create.
 1) Copy the 16-character code (no spaces).
 
-You can see why you wouldn't want all of this information just laying around in your code! There are some private things.
+You can look most of these up on the internet. You can see why you wouldn't want all of this information just laying around in your code! There are some private things, such as passwords. If you use github, ensure that when you push it the .env is exluded.
 
 ### people.csv
 
@@ -122,7 +123,7 @@ Hint: If you are lost, feel free to google how to do something! The code tells y
 
 Extra Hint: There are some parts that are maybe more complicated than you are ready to do, and if you are only here to learn how to set up the automation at the end, you might want to skip this part. In the folder titled cheat_code on the github repo, you can find working code for your weekly_email.py that you can copy in.
 
-## Test it
+### Test it
 
 Open the terminal, and test your file to ensure it works. You can run it by typing python or python3 followed by your file name
 
@@ -130,81 +131,73 @@ Open the terminal, and test your file to ensure it works. You can run it by typi
 python ./weekly_email.py
 ```
 
-If it doesn't work, debug it until it works! Have fun with this part! Make sure you get an email!
+If it doesn't work, debug it until it works! Don't get frustrated, have fun with this part! Make sure you get an email that has the file attached!
 
-## Schedule It (Just ChatGPT right now. Need to edit to make it flow better)
+## Let's Schedule It
 
-On Windows, you schedule Python scripts with Task Scheduler — the built-in cron-equivalent.
-Here’s the step-by-step guide to make your weekly job reliable:
+On a Windows computer, you will schedule this script using the Task Scheduler. This is built into your OS.
 
-1. Find your Python executable
+### Python program path
 
-Open Command Prompt and run:
+First we need the path to where the python program resides. Open up the Command Prompt and then run:
 
+```
 where python
+```
 
+Copy the full path that is returned somewhere you can easily access it (e.g. C:\Users\<you>\AppData\Local\Programs\Python\Python312\python.exe).
 
-Copy the full path (e.g. C:\Users\<you>\AppData\Local\Programs\Python\Python312\python.exe).
+### Script path
 
-2. Note your script path
+Now we need the path to where your script, weekly_email.py, resides. Here is an example of what this might look like:
 
-Example:
+C:\Users\<you>\Desktop\Projects\weekly_report\weekly_email.py
 
-C:\Users\<you>\Projects\weekly_report\main.py
+### Create a Task
 
-3. Create a Task
+1. First press Windows + R, type taskschd.msc, and then press Enter.
 
-Press Windows + R, type taskschd.msc, press Enter.
+2. Now Click Action → Create Task…
 
-Click Action → Create Task…
+3. Go to the General tab
 
-General tab
+4. Name: Weekly CSV Email
 
-Name: Weekly CSV Email
+5. Check the box for the following 
 
-Check “Run whether user is logged on or not”
+- “Run whether user is logged on or not”
+- “Run with highest privileges”
 
-Check “Run with highest privileges”
+6. Go to the Triggers tab → New…
 
-Triggers tab → New…
+7. Make sure the task begins: “On a schedule”
 
-Begin the task: “On a schedule”
+8. Choose Weekly and then pick your day and time (e.g., Mondays at 8:00 AM)
 
-Choose Weekly
+9. Go to the Actions tab → New…
 
-Pick your day and time (e.g., Mondays at 8:00 AM)
+10. Action: “Start a program”
 
-Actions tab → New…
+11. Now it is time to use those paths you copied earlier
 
-Action: “Start a program”
-
-Program/script: paste your python.exe path
+- Program/script: paste your python.exe path
 (e.g. C:\Users\<you>\AppData\Local\Programs\Python\Python312\python.exe)
 
-Add arguments: "C:\Users\<you>\Projects\weekly_report\main.py"
+- Add arguments: "C:\Users\<you>\Projects\weekly_report\weekly_email.py"
 
-Start in: your project folder (so .env and CSV are found)
+- Start in: your project folder (so .env and CSV are found)
 (e.g. C:\Users\<you>\Projects\weekly_report)
 
-Conditions – uncheck “Start the task only if the computer is on AC power” if it’s a laptop.
+12. If it’s a laptop: For the conditions, make sure to uncheck “Start the task only if the computer is on AC power”
 
-Settings – check “Run task as soon as possible after a scheduled start is missed.”
+13. In the settings – check “Run task as soon as possible after a scheduled start is missed.”
 
-4. Test it once
+### Time to Test it
 
-Right-click your new task → Run.
+Right-click on your new task → Run. Verify that it runs Python, creates report.xlsx, and sends the email.
 
-Verify: it runs Python, creates report.xlsx, and sends the email.
+That’s it — your Python report script will now run automatically once a week on Windows! Congratulations!
 
-Tip
-
-If your script writes logs, you can redirect output in the “Add arguments” box:
-
-"C:\path\to\main.py" >> "C:\path\to\weekly_log.txt" 2>&1
-
-
-That’s it — your Python report script will now run automatically once a week on Windows.
-
-### Conclusion
+## Conclusion
 
 Thanks for going through this walkthrough with me. Hopefully you have a better idea of what automation and scripting is, and how you can use it! Now, instead of spending 30 minutes every week editing an excel file, crafting an email, and sending it over, it will do it all without you spending any time at all! Scripting will make your job and life much easier, just learn how to use it!
