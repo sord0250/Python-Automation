@@ -15,7 +15,7 @@ CSV_IN = BASE_DIR / " "      # <- name of your existing CSV
 XLSX_OUT = BASE_DIR / " "    # <- name of excel export you will send in the email
 # ----------------------------------------------------------
 
-load_dotenv(BASE_DIR / ".env")  # SMTP settings from .env
+load_dotenv(BASE_DIR / ".env")  # Loads in the .env file so it can use the variables
 
 # TO-DO: following the example of the first, read in the rest of the .env values
 SMTP_HOST = os.getenv("SMTP_HOST")
@@ -23,7 +23,7 @@ SMTP_PORT = # wrap in an int so it is interpreted as an integer
 SMTP_USER = 
 SMTP_PASS = 
 
-EMAIL_FROM = os.getenv("EMAIL_FROM", "")
+EMAIL_FROM = os.getenv("EMAIL_FROM", "") # don't change this one
 
 
 def csv_to_pretty_excel(csv_path: str, xlsx_path: str, sheet_name: str = "Data"):
@@ -55,28 +55,28 @@ def csv_to_pretty_excel(csv_path: str, xlsx_path: str, sheet_name: str = "Data")
         last_row = 
         last_col = 
 
-       # Name your table, no spaces
+       # TO-DO: Name your table, no spaces
         ws.add_table(0, 0, last_row, last_col, {
             "name": " ",
             "columns": [{"header": c} for c in df.columns],
             "style": "Table Style Medium 9",
         })
 
-def send_email(subject:str, body:str, attachment_path:str, cc=None, bcc=None):
+def send_email(subject:str, body:str, attachment_path:str):
     # Parse recipients from env
     to_list = [e.strip() for e in os.getenv("EMAIL_TO", "").split(",") if e.strip()]
-    cc_list = [] if not cc else ([cc] if isinstance(cc, str) else cc)
-    bcc_list = [] if not bcc else ([bcc] if isinstance(bcc, str) else bcc)
 
+    # Prepares the email's information
     msg = EmailMessage()
     msg["Subject"] = subject
     msg["From"] = EMAIL_FROM
     msg["To"] = ", ".join(to_list)
-    if cc_list: msg["Cc"] = ", ".join(cc_list)
+    
     msg.set_content(body)
 
     # TO-DO: create code that will attach the excel file using the attatchment_path
     # Use mimetypes.guess_type and EmailMessage.add_attachment
+    # This is if you are up for a challenge - depending on level, just copy this part from the cheat_code folder in the Github 
     if attachment_path:
         pass
 
@@ -85,7 +85,7 @@ def send_email(subject:str, body:str, attachment_path:str, cc=None, bcc=None):
     with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=20) as s:
         # s.set_debuglevel(1) # uncomment if you want to see debug and active connection results
         # TO-DO: use s, .ehlo(), .starttls(), .ehlo(), the .login function and .send_message() from the smtp lib to login to the account
-        
+        # s is your connection to SMTP
 
 
 def main():
