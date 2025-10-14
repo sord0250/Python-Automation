@@ -46,18 +46,18 @@ This will familiarize you with how to use python, several of the libraries, and 
 
 This lab will give the instructions for a **Windows OS users**. A quick note here for non-window users: most of this can be done on any OS because the majority is done in the VSCode application. The last step, scheduling the task, will differ depending on your OS. 
 
-If you don't already have VSCode installed, download it. Here is a link you can download if from: [VSCode](https://code.visualstudio.com/download)
+- Download VSCode if you don't already have it installed. Here is a link you can download if from: [VSCode](https://code.visualstudio.com/download)
 
-**Create a new folder** to contain all your files wherever you desire, and name it "Walkthrough" or something else if you desire. 
+- **Create a new folder** to contain all your files wherever you desire, and name it "Walkthrough" or something else if you desire. 
 
-Now open VSCode, and click on the "Open Folder" button. Navigate to your newly made folder, and click select folder.
+- Open VSCode, and click on the "Open Folder" button. Navigate to your newly made folder, and click select folder.
 
 ### Create Files
-In the lefthand pannel that appears, you should see the word "WALKTHROUGH" (or the name of your folder you created). Found next to the name, click on the icon that look like a piece of paper with a + in the bottom right corner. This creates a new file. Name it **.env** and click enter.
+- In the lefthand pannel that appears, you should see the word "WALKTHROUGH" (or the name of your folder you created). **Click on the icon that look like a piece of paper with a +** in the bottom right corner found next to the name. This creates a new file. Name it **.env** and click enter.
 
-Now click on the same icon, and this time name the file **weekly_email.py**.
+- Now click on the same icon, and this time name the file **weekly_email.py**.
 
-Do it again and create a file called **people.csv**.
+- Do it again and create a file called **people.csv**.
 
 If your side pannel matches the following picture, you've done it right so far.
 
