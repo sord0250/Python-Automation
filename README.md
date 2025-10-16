@@ -48,6 +48,8 @@ This lab will give the instructions for a **Windows OS users**. A quick note her
 
 - Download VSCode if you don't already have it installed. Here is a link you can download if from: [VSCode](https://code.visualstudio.com/download)
 
+- Ensure that Python is downloaded onto your device!!
+
 - **Create a new folder** to contain all your files wherever you desire, and name it "Walkthrough" or something else if you desire. 
 
 - Open VSCode, and click on the "Open Folder" button. Navigate to your newly made folder, and click select folder.
@@ -55,9 +57,9 @@ This lab will give the instructions for a **Windows OS users**. A quick note her
 ### Create Files
 - In the lefthand pannel that appears, you should see the word "WALKTHROUGH" (or the name of your folder you created). **Click on the icon that look like a piece of paper with a +** in the bottom right corner found next to the name. This creates a new file. Name it **.env** and click enter.
 
-- Now click on the same icon, and this time name the file **weekly_email.py**.
+- Now click on the same icon, and this time name the file **weekly_email.py**
 
-- Do it again and create a file called **people.csv**.
+- Do it again and create a file called **people.csv**
 
 If your side pannel matches the following picture, you've done it right so far.
 
@@ -69,28 +71,29 @@ Your .env file is the file that contains the secrets, such as email addresses, p
 
 **Double click on the .env file** to open it on your main screen. It will be blank at first. Let's change that!
 
-The following code will need to be inserted into your .env file. Delete the comments and **input your unique variable**:
+The following code will need to be inserted into your .env file. Delete the comments (the #'s) and **input your unique variable**:
+
+A quick note about gmail's passwords: your normal one won't work. You need to generate a gmail app password so python can connect. Follow the steps found below the code to get that password.
 
 ``` 
 SMTP_HOST= # the providers SMTP server hostname i.e. smtp.gmail.com
 SMTP_PORT= # 587
-SMTP_USER= # your mailbox login
-SMTP_PASS= # your mailbox password
+SMTP_USER= # your full email i.e. spencer_o@spencer.com
+SMTP_PASS= # your App password you generate
 EMAIL_FROM= # your email in following format: Spencer O <spencer_o@spencer.com>
 EMAIL_TO=  # who you want to send the email to
 ```
 
-For gmail password, your regular one won't work. Instead, **do the following**:
-1) Generate a Gmail App Password
-1) Go to Google Account → Security → 2-Step Verification (turn it on if it’s off).
-1) In the App passwords section, type "Mail" as the name and click create.
+### Generate a Gmail App Password
+1) Go to Google Account → Security → 2-Step Verification: **Turn it on if it isn't already**
+1) Search: App passwords, type "Mail" as the name and click create.
 1) Copy the 16-character code (no spaces).
 
 You can see why you wouldn't want all of this information just laying around in your code! You wouldn't want your password floating around. If you use github, ensure that when you push it the .env is exluded.
 
 ### people.csv
 
-Copy the following lines into your people.csv file. This is the data we will be sending.
+**Copy the following lines** into your people.csv file. This is the data we will be formatting and sending.
 ```
 Last Name,First Name,Age,Date of Birth
 Johnson,Emma,28,1997-04-12
@@ -109,15 +112,19 @@ Davis,Noah,33,1992-08-21
 
 First we need to import the libraries and functions that we will be using. Python has tons of prebuilt libraries to use, but we have to install them first.
 
-Let's download the libaries. In the top bar, there is a terminal button. Click on it and select new terminal, and then run the following command:
+Let's download the libaries. In the top menu bar, there is a terminal button. Click on it and select new terminal, and then run the following command:
 
 ```
-pip install pandas python-dotenv
+python3 -m pip install pandas python-dotenv
+```
+OR
+```
+pip install pandas python-dotenv xlsxwriter
 ```
 
 In the github repo where you found these intructions, copy and paste the code from starter_code.py into your personal weekly_email.py file. 
 
-This code contains TO-DO's with instructions on how to finish the code. The comments will walk you through what you need to do and what the rest of the code is doing. Once all the TO-DO statements have been finished, move on to the next section. 
+This code contains TO-DO's with instructions on how to finish the code. Do all of the to-do instructions to complete the ocdde. The comments will walk you through what you need to do and what the rest of the code is doing. Once all the TO-DO statements have been finished, move on to the next section. 
 
 *Hint: If you are lost, feel free to google how to do something! The code tells you which functions to use, but not how those functions are formatted or what arguments they want. Look things up and be patient!*
 
@@ -128,7 +135,7 @@ This code contains TO-DO's with instructions on how to finish the code. The comm
 Open the terminal, and test your file to ensure it works. You can run it by typing python or python3 followed by your file name
 
 ```
-python ./weekly_email.py
+python3 ./weekly_email.py
 ```
 
 If it doesn't work, debug it until it works! Don't get frustrated, have fun with this part! Make sure you get an email that has the file attached!
@@ -152,6 +159,11 @@ Copy the full path somewhere you can easily access it. An example of what it sho
 Now we need the path to where your script, weekly_email.py, resides. Here is an example of what this might look like:
 
 C:\Users\<you>\Desktop\Projects\weekly_report\weekly_email.py
+
+*Tip: If WHERE PYTHON returns multiple paths, try running the following command with each one of your paths. Whichever one works is the right one! 
+```
+"Python Path" -u "Script Path"
+```
 
 ### Create a Task
 
