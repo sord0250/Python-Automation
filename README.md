@@ -6,7 +6,9 @@ By: Spencer Ord
 
 ## Introduction
 
-Maybe you've seen a "scripting in powershell or python preffered" line in a job posting, or you've heard of it but don't know what it is. Scripting will make your life easier when you learn how to apply it to the field you're in. Scripting is the process of taking an often repeated task and turning it into a script, or a program, that will either run itself or that you can run in a few commands. It saves time and energy that you can put towards something else. Unlike normal coding, which usually involves building an application from the ground up, scripting performs a specific task using other applications. 
+Maybe you've seen a "scripting in powershell or python preferred" line in a job posting, or you've heard of it but don't know what it is. Scripting will make your life easier when you learn how to apply it to the field you're in. 
+
+Scripting is the process of taking an often repeated task and turning it into a script, or a program, that will either run itself or that you can run in a few commands. It saves time and energy that you can put towards something else. Unlike normal coding, which usually involves building an application from the ground up, scripting performs a specific task using other applications. 
 
 To get a better understanding of what scripting can do, I will give you some common use cases:
 - automatically backing up files every day on your computer
@@ -14,25 +16,35 @@ To get a better understanding of what scripting can do, I will give you some com
 - sending out weekly reminder emails or updates
 - automatically download files from the web
 
-These examples are just the tip of the iceburg. There are so many possibilities! Tired of writing a weekly update email to your boss? You can make a script for that! Tired of downloading certain files every day when you get to work? You can write a script for that too! If you're in the cybersecurity field, you can write a script that scans logs for failed login attemptes. In IT operations, you can have a script rename 1000 files all at once! If you do data analysis, you can automatically take data from a csv file or database and create a chart. The possiblilities are as limitless as your imagination (which is a cheesy thing to say, but it is true).
+These examples are just the tip of the iceberg. There are so many possibilities! 
 
-Python is a popular programming language that is commonly used for scripting. There are several reasons for this. First, the python language is one of the easier languages to read, making for quicker learning and simpler work. Second, python has many pre-built libraries containing functions that you can use, whether it be for automation, networking, or data. Lastly, python works on any platform, whether it be Windows, Linux, or Mac. 
+Tired of writing a weekly update email to your boss? You can make a script for that! 
+Tired of downloading certain files every day when you get to work? You can write a script for that too! 
+If you're in the cybersecurity field, you can write a script that scans logs for failed login attempts. 
+In IT operations, you can have a script rename 1000 files all at once! 
+If you do data analysis, you can automatically take data from a csv file or database and create a chart. 
 
-For our purposes today, I will demonstrate how to parse through a CSV file and present it as a table in excel. Before getting there though, we need to follow a pattern to ensure we are prepared. You can follow this pattern to identitfy what tasks you could write a script for.
+Python is a popular programming language commonly used for scripting, and the one used in this walkthrough. There are several reasons for this:
+
+1. It's easier to read, making for quicker learning and simpler work
+2. Python has many pre-built libraries containing functions that you can use for handling automation, networking, or data to name just a few
+3. It works on any platform, including Windows, Linux, and Mac
+
+For our purposes today, I will demonstrate how to parse through a CSV file and present it as a table in excel. Before getting there though, we need to follow a pattern to ensure we are prepared. You can follow this pattern to identity what tasks you could write a script for.
 
 1. Identify a repetitive task that you do a lot
-2. Research and pick a library/tool that python has built in
+2. Research and pick a library/tool that python has built-in
 3. Write your script
 4. Test/debug it in a safe environment
 5. Schedule your script
 
-It isn't an overly complicated process! Making sure you are prepared ahead of time will ensure writing your script is fast and efficient. Testing it in a safe environment ensures you don't mess anything up in your work or home environment. Scheduling is the final step, the step that saves you hours of time. Once we are done creating our excel report script and scheduling it to run automatically, you won't have to worry about it every again. It will perform the task daily, weekly, or monthly.
+It isn't an overly complicated process! Making sure you are prepared ahead of time will ensure writing your script is fast and efficient. Testing it in a safe environment ensures you don't mess anything up in your work or home environment. 
 
-Scripting doesn't have to be overly complicated! So lets dive in.
+Scheduling is the final step, the step that saves you hours of time. Once we are done creating our excel report script and scheduling it to run automatically, you won't have to worry about it ever again. It will perform the task daily, weekly, or monthly.
 
 ### The Walkthrough
 
-Today I want to familiarize you with several of the capabilites that python has. To do this, this walkthorugh will focus on how to write a script that will do the following:
+Today I want to familiarize you with several of the capabilities that python has. To do this, this walkthrough will focus on how to write a script that will do the following:
 
 - take data from an excel file
 - format it nicely
@@ -44,9 +56,9 @@ This will familiarize you with how to use python, several of the libraries, and 
 ## Coding the Script in VS Code
 ### Initial Setup
 
-This lab will give the instructions for a **Windows OS users**. A quick note here for non-window users: most of this can be done on any OS because the majority is done in the VSCode application. The last step, scheduling the task, will differ depending on your OS. 
+This lab will give the instructions for a **Windows OS user**. A quick note here for non-Window users: most of this can be done on any OS because the majority is done in the VSCode application. The last step, scheduling the task, will differ depending on your OS. 
 
-- Download VSCode if you don't already have it installed. Here is a link you can download if from: [VSCode](https://code.visualstudio.com/download)
+- Download VSCode if you don't already have it installed. Here is a link you can download it from: [VSCode](https://code.visualstudio.com/download)
 
 - Ensure that Python is downloaded onto your device!!
 
@@ -55,7 +67,7 @@ This lab will give the instructions for a **Windows OS users**. A quick note her
 - Open VSCode, and click on the "Open Folder" button. Navigate to your newly made folder, and click select folder.
 
 ### Create Files
-- In the lefthand pannel that appears, you should see the word "WALKTHROUGH" (or the name of your folder you created). **Click on the icon that look like a piece of paper with a +** in the bottom right corner found next to the name. This creates a new file. Name it **.env** and click enter.
+- In the left-hand panel that appears, you should see the word "WALKTHROUGH" (or the name of your folder you created). **Click on the icon that looks like a piece of paper with a +** in the bottom right corner found next to the name. This creates a new file. Name it **.env** and click enter.
 
 - Now click on the same icon, and this time name the file **weekly_email.py**
 
@@ -76,7 +88,7 @@ The following code will need to be inserted into your .env file. Delete the comm
 A quick note about gmail's passwords: your normal one won't work. You need to generate a gmail app password so python can connect. Follow the steps found below the code to get that password.
 
 ``` 
-SMTP_HOST= # the providers SMTP server hostname i.e. smtp.gmail.com
+SMTP_HOST= # the provider's SMTP server hostname i.e. smtp.gmail.com
 SMTP_PORT= # 587
 SMTP_USER= # your full email i.e. spencer_o@spencer.com
 SMTP_PASS= # your App password you generate
@@ -89,7 +101,7 @@ EMAIL_TO=  # who you want to send the email to
 1) Search: App passwords, type "Mail" as the name and click create.
 1) Copy the 16-character code (no spaces).
 
-You can see why you wouldn't want all of this information just laying around in your code! You wouldn't want your password floating around. If you use github, ensure that when you push it the .env is exluded.
+You can see why you wouldn't want all of this information just laying around in your code! You wouldn't want your password floating around. If you use github, ensure that when you push it the .env is excluded.
 
 ### people.csv
 
@@ -112,7 +124,7 @@ Davis,Noah,33,1992-08-21
 
 First we need to import the libraries and functions that we will be using. Python has tons of prebuilt libraries to use, but we have to install them first.
 
-Let's download the libaries. In the top menu bar, there is a terminal button. Click on it and select new terminal, and then run the following command:
+Let's download the libraries. In the top menu bar, there is a terminal button. Click on it and select new terminal, and then run the following command:
 
 ```
 python3 -m pip install pandas python-dotenv
@@ -122,9 +134,9 @@ OR
 pip install pandas python-dotenv xlsxwriter
 ```
 
-In the github repo where you found these intructions, copy and paste the code from starter_code.py into your personal weekly_email.py file. 
+In the github repo where you found these instructions, copy and paste the code from starter_code.py into your personal weekly_email.py file. 
 
-This code contains TO-DO's with instructions on how to finish the code. Do all of the to-do instructions to complete the ocdde. The comments will walk you through what you need to do and what the rest of the code is doing. Once all the TO-DO statements have been finished, move on to the next section. 
+This code contains TO-DO's with instructions on how to finish the code. Do all of the to-do instructions to complete the code. The comments will walk you through what you need to do and what the rest of the code is doing. Once all the TO-DO statements have been finished, move on to the next section. 
 
 *Hint: If you are lost, feel free to google how to do something! The code tells you which functions to use, but not how those functions are formatted or what arguments they want. Look things up and be patient!*
 
