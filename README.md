@@ -81,11 +81,11 @@ If your side pannel matches the following picture, you've done it right so far.
 
 Your .env file is the file that contains the secrets, such as email addresses, passwords, etc, that you don't want to share with the world. It is good practice to keep these in this separate .env file so they remain safe.
 
-**Double click on the .env file** to open it on your main screen. It will be blank at first. Let's change that!
+- **Double click on the .env file** to open it on your main screen. It will be blank at first. Let's change that!
 
-The following code will need to be inserted into your .env file. Delete the comments (the #'s) and **input your unique variable**:
+- Insert the following code into your .env file. Delete the comments (the #'s) and **input your unique variable**:
 
-A quick note about gmail's passwords: your normal one won't work. You need to generate a gmail app password so python can connect. Follow the steps found below the code to get that password.
+*Important Tip: A quick note about gmail's passwords: your normal one won't work. You need to generate a gmail app password so python can connect. Follow the steps found below the code to get that password.*
 
 ``` 
 SMTP_HOST= # the provider's SMTP server hostname i.e. smtp.gmail.com
@@ -105,7 +105,7 @@ You can see why you wouldn't want all of this information just laying around in 
 
 ### people.csv
 
-**Copy the following lines** into your people.csv file. This is the data we will be formatting and sending.
+- **Copy the following lines** into your people.csv file. This is the data we will be formatting and sending.
 ```
 Last Name,First Name,Age,Date of Birth
 Johnson,Emma,28,1997-04-12
@@ -124,19 +124,21 @@ Davis,Noah,33,1992-08-21
 
 First we need to import the libraries and functions that we will be using. Python has tons of prebuilt libraries to use, but we have to install them first.
 
-Let's download the libraries. In the top menu bar, there is a terminal button. Click on it and select new terminal, and then run the following command:
+- In the top menu bar, there is a terminal button. Click on it and select new terminal
+- run the following command:
 
 ```
-python3 -m pip install pandas python-dotenv
+python3 -m pip install pandas python-dotenv xlsxwriter
 ```
 OR
 ```
 pip install pandas python-dotenv xlsxwriter
 ```
 
-In the github repo where you found these instructions, copy and paste the code from starter_code.py into your personal weekly_email.py file. 
+- In the github repo where you found these instructions, copy and paste the code from starter_code.py into your personal weekly_email.py file.
+- Complete all of the TO-DO's distributed throughout the code
 
-This code contains TO-DO's with instructions on how to finish the code. Do all of the to-do instructions to complete the code. The comments will walk you through what you need to do and what the rest of the code is doing. Once all the TO-DO statements have been finished, move on to the next section. 
+The TO-DO comments will walk you through what you need to do and what the rest of the code is doing. Once all the TO-DO statements have been finished, move on to the next section. 
 
 *Hint: If you are lost, feel free to google how to do something! The code tells you which functions to use, but not how those functions are formatted or what arguments they want. Look things up and be patient!*
 
@@ -144,7 +146,7 @@ This code contains TO-DO's with instructions on how to finish the code. Do all o
 
 ### Test it
 
-Open the terminal, and test your file to ensure it works. You can run it by typing python or python3 followed by your file name
+- Open the terminal, and test your file to ensure it works. You can run it by typing python or python3 followed by your file name
 
 ```
 python3 ./weekly_email.py
@@ -158,13 +160,15 @@ On a Windows computer, you will schedule this script using the Task Scheduler. T
 
 ### Python program path
 
-First we need the path to where the python program resides. Open up the Command Prompt and then run:
+First we need the path to where the python program resides.
+
+- Open up the Command Prompt and then run:
 
 ```
 where python
 ```
 
-Copy the full path somewhere you can easily access it. An example of what it should look like: C:\Users\<you>\AppData\Local\Programs\Python\Python312\python.exe
+- Copy the full path somewhere you can easily access it. An example of what it should look like: C:\Users\<you>\AppData\Local\Programs\Python\Python312\python.exe
 
 ### Script path
 
@@ -172,7 +176,7 @@ Now we need the path to where your script, weekly_email.py, resides. Here is an 
 
 C:\Users\<you>\Desktop\Projects\weekly_report\weekly_email.py
 
-*Tip: If WHERE PYTHON returns multiple paths, try running the following command with each one of your paths. Whichever one works is the right one! 
+*Tip: If you run WHERE PYTHON in the previous step and it returns multiple paths, try running the following command with each one of your paths. Whichever path works is the right one.* 
 ```
 "Python Path" -u "Script Path"
 ```
