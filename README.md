@@ -224,7 +224,7 @@ C:\Users\<you>\Desktop\Projects\weekly_report\weekly_email.py
 
 Right-click on your new task → Run. Verify that it runs Python, creates report.xlsx, and sends the email.
 
-That’s it — your Python report script will now run automatically once a week on Windows! Congratulations!
+That’s it — your Python report script will now run automatically once a week on Windows!
 
 ## Conclusion
 
