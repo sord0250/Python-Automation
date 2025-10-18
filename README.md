@@ -6,7 +6,7 @@ By: Spencer Ord
 
 ## Introduction
 
-Maybe you've seen a "scripting in powershell or python preferred" line in a job posting, or you've heard of it but don't know what it is. Scripting will make your life easier when you learn how to apply it to the field you're in. 
+Maybe you've seen a "scripting in powershell or python preferred" line in a job posting, or you've heard of automation but don't know what it is. Scripting will make your life easier when you learn how to apply it to the field you're in. 
 
 Scripting is the process of taking an often repeated task and turning it into a script, or a program, that will either run itself or that you can run in a few commands. It saves time and energy that you can put towards something else. Unlike normal coding, which usually involves building an application from the ground up, scripting performs a specific task using other applications. 
 
@@ -18,8 +18,8 @@ To get a better understanding of what scripting can do, I will give you some com
 
 These examples are just the tip of the iceberg. There are so many possibilities! 
 
-Tired of writing a weekly update email to your boss? You can make a script for that! 
-Tired of downloading certain files every day when you get to work? You can write a script for that too! 
+Tired of writing a weekly update email to your boss?
+Tired of downloading certain files every day when you get to work? You can write a script for both! 
 If you're in the cybersecurity field, you can write a script that scans logs for failed login attempts. 
 In IT operations, you can have a script rename 1000 files all at once! 
 If you do data analysis, you can automatically take data from a csv file or database and create a chart. 
